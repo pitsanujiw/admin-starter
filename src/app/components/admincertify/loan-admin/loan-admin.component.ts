@@ -11,6 +11,7 @@ export class LoanAdminComponent implements OnInit {
 
   UserRequest_loan: any[];
   selectedAll: any;
+  selected: any;
   typeCertifyLetter: string;
 constructor(private certifyService: CertifyLetterService) { }
 // get data request
@@ -32,17 +33,27 @@ ngOnInit() {
 //
 // checkbox selectAll
 selectAll(event) {
-  this.UserRequest_loan.forEach(e => e.selected = event.target.checked,
-    console.log('SelectAll')
-  );
+  this.UserRequest_loan.forEach(e => {
+    e.selected = event.target.checked;
+    if (e.selected === true) {
+      console.log(e);
+    }
+  });
+  console.log('............................');
 }
 //
+// e.selected = event.target.checked, console.log(event.target.checked)
 // Checkbox select and return log select
 checkIfAllSelected() {
-  this.selectedAll = this.UserRequest_loan.every((e) =>
-       e.selected === true
-       , console.log('Select')
-    );
+  this.selected = this.UserRequest_loan.every((e) =>
+  e.selected === true),
+  this.UserRequest_loan.forEach( e => {
+    if ( e.selected === true ) {
+      console.log(e);
+    }
+  }
+);
+console.log('............................');
 }
 //
 //

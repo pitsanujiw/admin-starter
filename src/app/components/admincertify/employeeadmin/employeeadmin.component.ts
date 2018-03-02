@@ -10,8 +10,33 @@ import { CertifyLetterService } from '../../../services/certify-letter.service';
 export class EmployeeadminComponent implements OnInit {
 
   UserRequest: any[];
-  selectedAll: any;
+  selected: any;
   typeCertifyLetter: string;
+  result: any [];
+  // employeeID: number;
+  //  firstName: string;
+  //  lastName: string;
+  //  numberOfCopy: number;
+  //  note: string;
+  //  status: number;
+  //  BBL: number;
+  //  GHB: number;
+  //  LHBank: number;
+  //  UOB: number;
+  //  countryOfVisit: string;
+  //  embassyForVisaApplication: string;
+  //  filesOwner: any;
+  //  firstNamePassport: string;
+  //  lastNamePassport: string;
+  //  passportExpiryDate: string;
+  //  passportNumber: string;
+  //  from: string;
+  //  to: string;
+  //  thomsonReutersOfficeYouPlanToVisit: string;
+  //  companyRegisteredName: string;
+  //  country: string;
+  //  purposeOfVisit: string;
+
   constructor(private certifyService: CertifyLetterService) { }
   // get data request
   ngOnInit() {
@@ -30,36 +55,101 @@ export class EmployeeadminComponent implements OnInit {
       );
   }
   //
+  //
   // checkbox selectAll
   selectAll(event) {
-    this.UserRequest.forEach(e => e.selected = event.target.checked,
-      console.log('SelectAll'));
+    this.UserRequest.forEach(e => {
+      e.selected = event.target.checked;
+      if (e.selected === true) {
+        console.log(e);
+        console.log(e.ticketID);
+      }
+    });
+    console.log('............................');
   }
   //
+  // e.selected = event.target.checked, console.log(event.target.checked)
   // Checkbox select and return log select
   checkIfAllSelected() {
-    this.selectedAll = this.UserRequest.every((e) =>
-      e.selected === true
-      , console.log('Select' + this.UserRequest)
-    );
+    this.selected = this.UserRequest.every((e) =>
+    e.selected === true),
+    this.UserRequest.forEach( e => {
+      if ( e.selected === true ) {
+        console.log(e);
+        console.log(e.ticketID);
+        this.result = e.ticketID;
+       console.log(this.result);
+      }
+    }
+  );
+  console.log('............................');
   }
+
   //
   //
   //
   submit() {
-    this.typeCertifyLetter = 'employeeLetter';
-    if (this.typeCertifyLetter === 'employeeLetter') {
-      console.log('ok correct');
-    } else if (this.typeCertifyLetter === 'FurtherLetter') {
-      console.log('FutherLetter');
-    } else if (this.typeCertifyLetter === 'BusinessVisa') {
-      console.log('BusinessVisa');
-    } else if (this.typeCertifyLetter === 'TourVisa') {
-      console.log('TourVisa');
-    } else {
-      console.error('ERROR DATA TYPE');
-    }
-  }
+    console.log(this.result);
+    this.UserRequest.forEach(e => {
+      if (this.result === e.ticketID) {
+        if (e.typeCertifyLetter === 'employmentCertifyLetter') {
+          console.log('success 1');
+        } else if (e.typeCertifyLetter === 'certifyLetterForHousingLoan') {
+          console.log('success 2');
+        } else if (e.typeCertifyLetter === 'certifyLetterForFurtherEducation') {
+          console.log('success 3');
+        } else if (e.typeCertifyLetter === 'certifyLetterForTouristVisaApplication') {
+          console.log('success 4');
+        } else if (e.typeCertifyLetter === 'certifyLetterForBusinessVisaApplication') {
+          console.log('success 5');
+        } else {
+        console.error('error');
+               }
+      }
+      // if (e.typeCertifyLetter === 'employmentCertifyLetter') {
+      //   if (this.result === e.ticketID ) {
+      //     console.log('Success');
+      //   }
+      // }
+      // if (e.typeCertifyLetter === 'certifyLetterForHousingLoan') {
+      // //   console.log(e.typeCertifyLetter);
+      // //   console.log(e.status);
+      // //   console.log(e.owner.employeeID);
+      // // console.log(e.owner.note);
+      // if (this.result === e.ticketID ) {
+      //   console.log('Success');
+      // }
+      // }
+      // if (e.typeCertifyLetter === 'certifyLetterForFurtherEducation') {
+      // //   console.log(e.typeCertifyLetter);
+      // //   console.log(e.status);
+      // //   console.log(e.owner.employeeID);
+      // // console.log(e.owner.note);
+      // if (this.result === e.ticketID ) {
+      //   console.log('Success2');
+      // }
+      // }
+      // if (e.typeCertifyLetter === 'certifyLetterForTouristVisaApplication') {
+      // //   console.log(e.typeCertifyLetter);
+      // //   console.log(e.status);
+      // //   console.log(e.owner.employeeID);
+      // // console.log(e.owner.note);
+      // if (this.result === e.ticketID ) {
+      //   console.log('Success3');
+      // }
+      // }
+      // if (e.typeCertifyLetter === 'certifyLetterForBusinessVisaApplication') {
+      // //   console.log(e.typeCertifyLetter);
+      // //   console.log(e.status);
+      // //   console.log(e.owner.employeeID);
+      // // console.log(e.owner.note);
+      // if (this.result === e.ticketID ) {
+      //   console.log('Success4');
+      // }
+      // }
+      });
+      }
+
   CreateLetter() {
     console.log('Create Letter');
   }
@@ -70,4 +160,5 @@ export class EmployeeadminComponent implements OnInit {
     console.log('Send Notification');
   }
 }
+
 
