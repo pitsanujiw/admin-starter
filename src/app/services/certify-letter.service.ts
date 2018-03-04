@@ -43,6 +43,9 @@ export class CertifyLetterService {
     return this.http.put(`${this.url}/employmentCertifyLetter/update`, body).map(e => e.json());
   }
 
+  public updateEmploymentCertifyLetter2(e) {
+    return this.http.put(`${this.url}/employmentCertifyLetter/update`,e).map(e => e.json());
+  }
 
 
   public updateCertifyLetterForHousingLoan(

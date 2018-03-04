@@ -12,30 +12,32 @@ export class EmployeeadminComponent implements OnInit {
   UserRequest: any[];
   selected: any;
   typeCertifyLetter: string;
-  result: any [];
-  // employeeID: number;
-  //  firstName: string;
-  //  lastName: string;
-  //  numberOfCopy: number;
-  //  note: string;
-  //  status: number;
-  //  BBL: number;
-  //  GHB: number;
-  //  LHBank: number;
-  //  UOB: number;
-  //  countryOfVisit: string;
-  //  embassyForVisaApplication: string;
-  //  filesOwner: any;
-  //  firstNamePassport: string;
-  //  lastNamePassport: string;
-  //  passportExpiryDate: string;
-  //  passportNumber: string;
-  //  from: string;
-  //  to: string;
-  //  thomsonReutersOfficeYouPlanToVisit: string;
-  //  companyRegisteredName: string;
-  //  country: string;
-  //  purposeOfVisit: string;
+  modifiedAt: string;
+  result: any[]=[];
+  TricketID: string;
+  employeeID: number;
+  firstName: string;
+  lastName: string;
+  numberOfCopy: number;
+  note: string;
+  status: number;
+  BBL: number;
+  GHB: number;
+  LHBank: number;
+  UOB: number;
+  countryOfVisit: string;
+  embassyForVisaApplication: string;
+  filesOwner: any;
+  firstNamePassport: string;
+  lastNamePassport: string;
+  passportExpiryDate: string;
+  passportNumber: string;
+  from: string;
+  to: string;
+  thomsonReutersOfficeYouPlanToVisit: string;
+  companyRegisteredName: string;
+  country: string;
+  purposeOfVisit: string;
 
   constructor(private certifyService: CertifyLetterService) { }
   // get data request
@@ -44,6 +46,8 @@ export class EmployeeadminComponent implements OnInit {
       .showAllCertifyLetter()
       .subscribe(
         res => {
+          console.log(res);
+          
           if (res.status === true) {
             this.UserRequest = res.message;
             console.log(this.UserRequest);
@@ -60,53 +64,80 @@ export class EmployeeadminComponent implements OnInit {
   selectAll(event) {
     this.UserRequest.forEach(e => {
       e.selected = event.target.checked;
-      if (e.selected === true) {
+      if(e.selected === true) {
         console.log(e);
-        console.log(e.ticketID);
-      }
-    });
-    console.log('............................');
-  }
-  //
-  // e.selected = event.target.checked, console.log(event.target.checked)
-  // Checkbox select and return log select
-  checkIfAllSelected() {
-    this.selected = this.UserRequest.every((e) =>
-    e.selected === true),
-    this.UserRequest.forEach( e => {
-      if ( e.selected === true ) {
-        console.log(e);
-        console.log(e.ticketID);
-        this.result = e.ticketID;
-       console.log(this.result);
+         this.result = e;
       }
     }
-  );
-  console.log('............................');
+    );
+    console.log(this.UserRequest);
+    console.log(this.result);
+    
   }
+  //
+  //
+ // check if Select???
+  checkIfAllSelected(event) {
+    
+    this.selected = this.UserRequest.every((e) =>
+      e.selected === true),
+      this.UserRequest.forEach(e => {
+        this.result = e
+        if (e.selected === true) {
+          console.log(this.result);
+console.log('OK');
 
+        }
+      }
+      );
+      console.log('...........');
+      
+  }
   //
   //
   //
   submit() {
-    console.log(this.result);
-    this.UserRequest.forEach(e => {
-      if (this.result === e.ticketID) {
-        if (e.typeCertifyLetter === 'employmentCertifyLetter') {
-          console.log('success 1');
-        } else if (e.typeCertifyLetter === 'certifyLetterForHousingLoan') {
-          console.log('success 2');
-        } else if (e.typeCertifyLetter === 'certifyLetterForFurtherEducation') {
-          console.log('success 3');
-        } else if (e.typeCertifyLetter === 'certifyLetterForTouristVisaApplication') {
-          console.log('success 4');
-        } else if (e.typeCertifyLetter === 'certifyLetterForBusinessVisaApplication') {
-          console.log('success 5');
-        } else {
-        console.error('error');
-               }
-      }
-      // if (e.typeCertifyLetter === 'employmentCertifyLetter') {
+    
+    // this.UserRequest.forEach(e => {
+    //   if (this.result === e.ticketID) {
+    //     if (e.typeCertifyLetter === 'employmentCertifyLetter') {
+    //       console.log('success 1');
+    //       console.log(e);
+    //       const employeeID = e.owner.employeeID;
+    //       const TricketID = e.ticketID;
+    //       const status = 0;
+    //       const modifiedAt = e.modifiledAt;
+    //       const firstName = e.owner.firstName;
+    //       const lastName = e.owner.lastName;
+    //       const numberOfCopy = e.owner.numberOfCopy;
+    //       const note = e.owner.note;
+
+    //       this.certifyService.updateEmploymentCertifyLetter(
+    //         TricketID,
+    //         modifiedAt,
+    //         status,
+    //         employeeID,
+    //         firstName,
+    //         lastName,
+    //         numberOfCopy
+    //         , note)
+    //         .subscribe(res => {
+    //           console.log(res);
+    //           console.log('success');
+    //         })
+    //     } else if (e.typeCertifyLetter === 'certifyLetterForHousingLoan') {
+    //       console.log('success 2');
+    //     } else if (e.typeCertifyLetter === 'certifyLetterForFurtherEducation') {
+    //       console.log('success 3');
+    //     } else if (e.typeCertifyLetter === 'certifyLetterForTouristVisaApplication') {
+    //       console.log('success 4');
+    //     } else if (e.typeCertifyLetter === 'certifyLetterForBusinessVisaApplication') {
+    //       console.log('success 5');
+    //     } else {
+    //       console.error('error');
+    //     }
+    //   }
+       // if (e.typeCertifyLetter === 'employmentCertifyLetter') {
       //   if (this.result === e.ticketID ) {
       //     console.log('Success');
       //   }
@@ -147,8 +178,8 @@ export class EmployeeadminComponent implements OnInit {
       //   console.log('Success4');
       // }
       // }
-      });
-      }
+    // });
+  }
 
   CreateLetter() {
     console.log('Create Letter');
