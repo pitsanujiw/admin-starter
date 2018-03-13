@@ -33,6 +33,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@angular/cdk@^5.2.4":
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-5.2.4.tgz#c0a429a8710d8fedb157f546e21cb49d4335f7f7"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/cli@1.6.7":
   version "1.6.7"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-1.6.7.tgz#e2323753c144b5de6c699bbebee688105a394641"
@@ -4911,6 +4917,10 @@ ngrok@*:
     request "^2.55.0"
     uuid "^3.0.0"
 
+ngx-pagination@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-3.1.0.tgz#66018bca39158215d66211b2b2cf368848b7d9d8"
+
 no-case@^2.2.0:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"
@@ -5885,6 +5895,10 @@ pretty-error@^2.0.2:
   dependencies:
     renderkid "^2.0.1"
     utila "~0.4"
+
+primeng@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/primeng/-/primeng-5.2.1.tgz#c32399c73a5e0071d4e8d10edc24869be5546fac"
 
 process-nextick-args@~1.0.6:
   version "1.0.7"
@@ -7407,6 +7421,10 @@ svgo@^0.7.0:
     mkdirp "~0.5.1"
     sax "~1.2.1"
     whet.extend "~0.9.9"
+
+sweetalert2@^7.15.1:
+  version "7.15.1"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.15.1.tgz#edd9bd4d5501b22e18755686a343c7afe3e9adb2"
 
 symbol-observable@1.0.1:
   version "1.0.1"
